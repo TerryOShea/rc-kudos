@@ -1,13 +1,13 @@
-class MyBotHandler(object):
+class KudosHandler(object):
     '''
-    Use this bot to give kudos to fellow Recurse Center community members.
+    Use this bot to give kudos to your fellow community members.
     '''
 
     def usage(self):
+        # TODO: fill this in
         return '''[FILL THIS IN]'''
 
     def handle_message(self, message, bot_handler):
-        # add your code here
         bot_handler.send_reply(message, "Thanks for the message!")
 
-handler_class = MyBotHandler
+handler_class = KudosHandler
