@@ -1,6 +1,5 @@
-from flask import Flask
 import zulip
-app = Flask(__name__)
+import time
 
 client = zulip.Client(config_file=".zuliprc")
 
@@ -26,10 +25,14 @@ def send_kudo():
 def get_messages():
     request = {
         "use_first_unread_anchor": True,
-        "narrow": [{"operator": "is:mentioned", "operand": "KudosBot"}],
+        "num_before": 4,
+        "num_after": 8,
+        "narrow": [{"operator": "is", "operand": "mentioned"}],
     }
     result = client.get_messages(request)
     print(result)
 
-if name == "__main__":
-    get_messages()
+if __name__ == "__main__":
+    while True:
+        get_messages()
+        time.sleep(5)
