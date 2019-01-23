@@ -26,15 +26,20 @@ def get_messages():
     }
     result = client.get_messages(request)
     if result['found_newest']:
-        process_messages(result['messages'])
+        for message in result['messages']:
+            process_message(message)
+        mark_read([message['id'] for message in result['messages']])
 
-def process_messages(messages):
-    for message in messages:
-        # TODO Get the format and send_kudo
-        print('The message: ')
-        print(message)
+def process_message(messages):
+    # TODO Get the format and send_kudo
+    print('The message: ')
+    print(message)
+    # Find the user mentioned, probably with soup search for the second span with class="user-mention"
 
-    mark_read([message['id'] for message in messages])
+    # Get the kudo message, stripping the mentions and the flag inside the paragraph
+
+    # Get the anonymous flag '--anonymous'
+
 
 def mark_read(message_ids):
     if message_ids:
