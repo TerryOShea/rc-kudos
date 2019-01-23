@@ -1,18 +1,19 @@
 import zulip
 import time
+from bs4 import BeautifulSoup
 
 client = zulip.Client(config_file=".zuliprc")
 
 
 
-def send_kudo():
+def send_kudo(subject, message_body):
     # TODO: verify against list of users and handles
     # TODO: pull info from parameters: recipient, public/private/anonymous
     request = {
         "type": "stream",
         "to": "kudos",
-        "subject": "Terry O'Shea",
-        "content": "Great work today, terrykoshea@gmail.com!",
+        "subject": subject,
+        "content": message_body,
     }
     result = client.send_message(request)
     print(result)
@@ -30,10 +31,17 @@ def get_messages():
             process_message(message)
         mark_read([message['id'] for message in result['messages']])
 
-def process_message(messages):
-    # TODO Get the format and send_kudo
-    print('The message: ')
-    print(message)
+def process_message(message):
+    soup = BeautifulSoup(message['content'], 'html.parser')
+    recipients = soup.findAll("span", {"class": "user-mention"})
+    # Filter out the @TestBot user by its id
+    recipients = [recipient for recipient in recipients if recipient["data-user-id"] != "200653"]
+
+    message_body = message['content'].split('</span>')[-1][:-4]
+
+    for recipient in recipients:
+        send_kudo(recipient.get_text(), message_body)
+    
     # Find the user mentioned, probably with soup search for the second span with class="user-mention"
 
     # Get the kudo message, stripping the mentions and the flag inside the paragraph
