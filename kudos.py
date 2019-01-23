@@ -15,6 +15,7 @@ class KudosHandler(object):
             'receiver': 'Michelle',
             'message': 'Great work!',
             'private': False,
+            'anonymous': False,
         }
 
     def handle_message(self, message, bot_handler):
@@ -22,8 +23,8 @@ class KudosHandler(object):
         #bot_handler.send_reply(message, "Thanks for the message!")
         bot_handler.send_message(dict(
             type='stream',
-            to='397 Bridge',
-            subject='kudos',
+            to='kudos',
+            subject=parsed_message['receiver'],
             content=f"Congratulations to {parsed_message['receiver']}!",
         ))
 
