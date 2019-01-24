@@ -2,7 +2,7 @@
 
 A [Zulip](https://zulipchat.com/) bot for giving kudos to your community.
 
-## What is Kudo
+## What is Kudos
 
 **Praise and honour received for an achievement.**
 
@@ -30,7 +30,7 @@ We trust in your good sense, so we do not filter the content of your message.
 Please use it wizely.
 
 ### 3. Anonymous
-You can do anonymous so the person will receive the Kudo but will not know you are the sender.
+You can do anonymous so the person will receive Kudos but will not know you are the sender.
 
 Use `--anon` on the content of the message
 
