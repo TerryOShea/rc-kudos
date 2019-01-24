@@ -4,7 +4,7 @@ import re
 
 class Kudos:
     def __init__(self):
-        self.client = zulip.Client(config_file="../.zuliprc")
+        self.client = zulip.Client()
 
     def kudos_handler(self, messages):
         for message in messages:
@@ -12,7 +12,7 @@ class Kudos:
             for recipient in recipients:
                 personal_message = message_body
                 # Add a Congratulations at the beginning and tag the person
-                personal_message = f":congratulations: Contragulations @**{recipient}**, you received a **Kudo**\n\n" + personal_message
+                personal_message = f":congratulations: Congratulations @**{recipient}**, you received a **Kudo**\n\n" + personal_message
 
                 # Add the from at the end
                 if not is_anonymous:
