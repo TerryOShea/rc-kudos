@@ -3,6 +3,11 @@
     "builds": [
         { "src": "**/*.py", "use": "@now/python" , "config": { "maxLambdaSize": "10mb" } }
     ],
+    "env": {
+        "ZULIP_EMAIL": "test-kudos-bot@recurse.zulipchat.com",
+        "ZULIP_API_KEY": "u3AHaCoRU4OTmbKLZT2s79mzl5Dvpvof",
+        "ZULIP_SITE": "https://recurse.zulipchat.com"
+    },
     "routes": [
         { "src": "/.*", "dest": "/"}
     ]

@@ -10,4 +10,3 @@ class handler(BaseHTTPRequestHandler):
         k.get_messages()
         self.end_headers()
         return
-
