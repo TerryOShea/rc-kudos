@@ -99,8 +99,8 @@ class Kudos:
             result = self.client.update_message_flags(request)
 
 
-if __name__ == "__main__":
-    while True:
-        k = Kudos()
-        k.get_messages()
-        time.sleep(5)
+#if __name__ == "__main__":
+#    while True:
+#        k = Kudos()
+#        k.get_messages()
+#        time.sleep(5)
