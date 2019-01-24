@@ -1,0 +1,5 @@
+.zuliprc
+.environment
+__pycache__/
+zulip.sh
+.env
